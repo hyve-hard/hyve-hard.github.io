@@ -1,67 +1,76 @@
 {
+  "settings": {
+    "heroTitle": "ENTER THE HYVE.",
+    "heroSubtitle": "We Are Hard Dance.",
+    "introJa": "日本発のHARD DANCEレーベル。クラブミュージックの熱量を、世界へ。",
+    "introEn": "HYVE is a Japanese Hard Dance label specializing in club sounds around 150 BPM.",
+    "aboutJa": "HYVEは、日本発のHARD DANCEレーベル。BPM150周辺のクラブサウンドを中心に、多様なHARD DANCEを発信しています。",
+    "bandcampUrl": "https://hyve-hard.bandcamp.com/",
+    "socialUrl": "https://lit.link/hyve"
+  },
   "releases": [
     {
       "title": "HYVE VOL.6",
       "date": "2026.04",
       "kind": "COMPILATION",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-6",
-      "cover": "assets/vol6.webp"
+      "cover": "assets/vol6.webp",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-6"
     },
     {
       "title": "EP-03: Ravelet",
       "date": "2025.10",
       "kind": "EP",
-      "url": "https://hyve-hard.bandcamp.com/album/ep-03-ravelet",
-      "cover": "assets/ep03.webp"
+      "cover": "assets/ep03.webp",
+      "url": "https://hyve-hard.bandcamp.com/album/ep-03-ravelet"
     },
     {
       "title": "HYVE Vol.5",
       "date": "2025.04",
       "kind": "COMPILATION",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-5",
-      "cover": "assets/vol5.webp"
+      "cover": "assets/vol5.webp",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-5"
     },
     {
       "title": "EP-02: Techno Sunrise",
       "date": "2024.10",
       "kind": "EP",
-      "url": "https://hyve-hard.bandcamp.com/album/ep-02-techno-sunrise",
-      "cover": "assets/ep02.webp"
+      "cover": "assets/ep02.webp",
+      "url": "https://hyve-hard.bandcamp.com/album/ep-02-techno-sunrise"
     },
     {
       "title": "HYVE Vol.4",
       "date": "2024.04",
       "kind": "COMPILATION",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-4",
-      "cover": "assets/vol4.webp"
+      "cover": "assets/vol4.webp",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-4"
     },
     {
       "title": "EP-01: Donk Island",
       "date": "2022.10",
       "kind": "EP",
-      "url": "https://hyve-hard.bandcamp.com/album/ep-01-donk-island",
-      "cover": "assets/ep01.webp"
+      "cover": "assets/ep01.webp",
+      "url": "https://hyve-hard.bandcamp.com/album/ep-01-donk-island"
     },
     {
       "title": "HYVE Vol.3",
       "date": "2022.04",
       "kind": "COMPILATION",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-3",
-      "cover": "assets/vol3.webp"
+      "cover": "assets/vol3.webp",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-3"
     },
     {
       "title": "HYVE Vol.2",
       "date": "2021.10",
       "kind": "COMPILATION",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-2",
-      "cover": "assets/vol2.webp"
+      "cover": "assets/vol2.webp",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-2"
     },
     {
       "title": "HYVE Vol.1",
       "date": "2021.04",
       "kind": "COMPILATION",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-1",
-      "cover": "assets/vol1.webp"
+      "cover": "assets/vol1.webp",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-1"
     }
   ],
   "featured": [
@@ -72,37 +81,28 @@
       "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-6"
     },
     {
-      "title": "Make Slappin'",
-      "artist": "s-don",
-      "release": "HYVE VOL.6",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-6"
+      "title": "Retrospect",
+      "artist": "Sanaas",
+      "release": "HYVE VOL.1",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-1"
     },
     {
-      "title": "Ritual Avalanche",
-      "artist": "Nizikawa",
-      "release": "HYVE VOL.6",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-6"
-    },
-    {
-      "title": "FEED YOUR SOUL",
+      "title": "Ghepardo",
       "artist": "DJ Noriken",
-      "release": "HYVE VOL.6",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-6"
+      "release": "HYVE VOL.3",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-3"
     },
     {
-      "title": "Rave Control",
-      "artist": "s-don",
-      "release": "EP-03: Ravelet",
-      "url": "https://hyve-hard.bandcamp.com/album/ep-03-ravelet"
+      "title": "Sick",
+      "artist": "RiraN",
+      "release": "HYVE VOL.5",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-5"
+    },
+    {
+      "title": "caught up",
+      "artist": "the dig account",
+      "release": "EP-01: Donk Island",
+      "url": "https://hyve-hard.bandcamp.com/album/ep-01-donk-island"
     }
-  ],
-  "settings": {
-    "heroTitle": "ENTER THE HYVE.",
-    "heroSubtitle": "We Are Hard Dance.",
-    "introJa": "日本発のHARD DANCEレーベル。クラブミュージックの熱量を、世界へ。",
-    "introEn": "HYVE is a Japanese Hard Dance label specializing in club sounds around 150 BPM.",
-    "bandcampUrl": "https://hyve-hard.bandcamp.com/",
-    "socialUrl": "https://lit.link/hyve",
-    "aboutJa": "HYVEは、日本発のHARD DANCEレーベル。BPM150周辺のクラブサウンドを中心に、多様なHARD DANCEを発信しています。"
-  }
+  ]
 }
