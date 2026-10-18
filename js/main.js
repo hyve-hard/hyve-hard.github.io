@@ -63,12 +63,14 @@
     const node = (name, klass, value) => {const el=document.createElement(name);if(klass)el.className=klass;if(value!==undefined)el.textContent=text(value);return el;};
     featured.replaceChildren();
     (data.featured || []).forEach((track,index) => {
-      const row=node('article','track'); row.append(node('div','track-number',String(index+1).padStart(2,'0')));
+      const row=node('article','track');
+      const trackNumber=String(index+1).padStart(2,'0');
       const details=node('div'); details.append(node('div','track-title',track.title),node('div','track-artist',track.artist));row.append(details);
       row.append(node('div','track-release',track.release));
       const audioUrl = safeAudioUrl(track.audioUrl);
       if (audioUrl && audio) {
-        const button=node('button','track-action inline-play','▶');
+        const button=node('button','track-number track-number-play',trackNumber);
+        button.dataset.number=trackNumber;
         button.type='button';
         button.setAttribute('aria-label',text(track.title) + ' を再生');
         button.setAttribute('aria-pressed','false');
@@ -83,7 +85,7 @@
             else { try {await audio.play();} catch {if(status)status.textContent='再生できません。音源をご確認ください。';} }
             return;
           }
-          if(activeRow) { activeRow.classList.remove('is-active','is-playing'); if(activeButton) {activeButton.textContent='▶';activeButton.setAttribute('aria-pressed','false');} if(activeSeek) {activeSeek.disabled=true;} }
+          if(activeRow) { activeRow.classList.remove('is-active','is-playing'); if(activeButton) {activeButton.textContent=activeButton.dataset.number;activeButton.setAttribute('aria-pressed','false');} if(activeSeek) {activeSeek.disabled=true;} }
           activeRow=row; activeButton=button; activeSeek=seek;
           row.classList.add('is-active'); seek.disabled=false;
           audio.src=audioUrl; audio.load();
@@ -95,11 +97,14 @@
           audio.currentTime=audio.duration*Number(seek.value)/100;
           updateProgress();
         });
-        row.append(button,seek);
+        row.prepend(button);
+        row.append(seek);
       } else {
-        const link=node('a','track-action','LISTEN ↗');
+        const link=node('a','track-number track-number-link',trackNumber);
         link.href=safeUrl(track.url)||'#listen';link.target='_blank';link.rel='noopener noreferrer';
-        row.append(link);
+        link.title=text(track.title)+' を外部で聴く';
+        link.setAttribute('aria-label',text(track.title)+' を外部で聴く');
+        row.prepend(link);
       }
       featured.append(row);
     });

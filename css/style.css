@@ -117,3 +117,19 @@ body{font-family:Inter,'Noto Sans JP','Helvetica Neue',Arial,sans-serif;font-fea
 .track-action.inline-play:hover,.track.is-playing .track-action.inline-play{background:var(--yellow);color:#080808}
 .track-progress:focus-visible,.inline-play:focus-visible{outline:2px solid white;outline-offset:4px}
 @media(max-width:740px){.track{padding-bottom:18px}.track-action.inline-play{width:38px;height:38px}}
+
+/* Left-side track-number controls (2026-10-18) */
+.track{grid-template-columns:48px minmax(0,1fr) minmax(90px,.32fr);column-gap:14px}
+.track-number-play,.track-number-link{
+  border:0;background:none;color:var(--yellow);font:900 16px/1 Arial,sans-serif;
+  min-width:42px;min-height:42px;padding:0;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;text-align:center;text-decoration:none;letter-spacing:.03em;
+}
+.track-number-play:hover,.track-number-play:focus-visible,.track-number-link:hover,.track-number-link:focus-visible{color:#fff}
+.track-number-play:not([aria-pressed="true"]):hover{font-size:0}
+.track-number-play:not([aria-pressed="true"]):hover::before{content:"▶";font-size:16px}
+.track-number-link:hover{font-size:0}
+.track-number-link:hover::before{content:"↗";font-size:20px}
+.track-number-play:focus-visible,.track-number-link:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
+.track>.track-progress{grid-column:1/-1}
+@media(max-width:740px){.track{grid-template-columns:42px minmax(0,1fr);gap:8px}.track-release{display:none}}
