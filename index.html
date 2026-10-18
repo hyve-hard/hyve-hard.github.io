@@ -10,7 +10,7 @@
   <meta property="og:type" content="website">
   <title>HYVE | We Are Hard Dance.</title>
   <link rel="stylesheet" href="css/style.css?v=hyve-inline-progress-20261018">
-  <script src="js/main.js?v=hyve-display-restore-20261018-v3" defer></script>
+  <script src="js/main.js?v=hyve-display-restore-20261018-v4" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -30,12 +30,8 @@
     </section>
     <section id="listen" class="section-pad section-surface">
       <div class="section-heading"><div><p class="kicker">01 / DISCOVER THE SOUND</p><h2>START <span>LISTENING.</span></h2></div><p>HYVEを初めて知ったあなたへ。<br>まずは、この5曲から。</p></div>
-      <div class="native-player" aria-label="HYVEオーディオプレーヤー">
-        <div class="player-heading"><strong>HYVE AUDIO PLAYER</strong><span>LISTEN ON THIS SITE</span></div>
-        <div class="now-playing"><span class="playing-tag">NOW PLAYING</span><strong id="audioTrackTitle">SELECT A TRACK</strong><span id="audioTrackArtist">下の楽曲から選択してください</span></div>
-        <audio id="hyveAudio" controls preload="none" aria-label="選択中のHYVE楽曲"></audio>
-        <p id="audioStatus" class="tiny-note" role="status">音源が登録されると、このページ内で再生できます。</p>
-      </div>
+      <audio id="hyveAudio" preload="none" hidden aria-label="HYVE試聴プレーヤー"></audio>
+      <p id="audioStatus" class="sr-only" role="status" aria-live="polite"></p>
       <div id="featured" class="track-list"><p class="loading">Loading tracks...</p></div>
       <p class="tiny-note">音源を登録済みの曲は「▶ PLAY」でこのページ内から再生できます。未登録の曲は作品ページへのリンクを表示します。</p>
       <div class="inline-actions"><a class="btn primary" data-setting="bandcamp" href="https://hyve-hard.bandcamp.com/" target="_blank" rel="noopener">ALL TRACKS ON BANDCAMP ↗</a></div>
