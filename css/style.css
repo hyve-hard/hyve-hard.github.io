@@ -133,3 +133,94 @@ body{font-family:Inter,'Noto Sans JP','Helvetica Neue',Arial,sans-serif;font-fea
 .track-number-play:focus-visible,.track-number-link:focus-visible{outline:2px solid var(--yellow);outline-offset:2px}
 .track>.track-progress{grid-column:1/-1}
 @media(max-width:740px){.track{grid-template-columns:42px minmax(0,1fr);gap:8px}.track-release{display:none}}
+
+/* HYVE inline playback: permanent play symbol and linked release names */
+.track-number-play:not([aria-pressed="true"]):hover,
+.track-number-link:hover {font-size:16px}
+.track-number-play:not([aria-pressed="true"]):hover::before,
+.track-number-link:hover::before {content:none}
+.track-number-play,.track-number-link{
+  font-family:Arial,sans-serif;
+  color:var(--yellow);
+  font-size:17px;
+  transition:color .16s ease;
+}
+.track-number-play[aria-pressed="true"] {color:var(--yellow)}
+.track-release-link{display:inline-block;width:fit-content;text-decoration:none;line-height:1.5}
+.track-release-link:hover,.track-release-link:focus-visible{color:var(--yellow);text-decoration:underline;text-underline-offset:3px}
+@media(max-width:740px){
+  .track{grid-template-columns:42px minmax(0,1fr);gap:8px}
+  .track-release-link{display:block;grid-column:2;grid-row:2;margin-top:-6px;font-size:11px}
+  .track>.track-progress{grid-column:1/-1}
+}
+
+/* Minimal HYVE playback controls: glyphs only, no framing. */
+.track-number-play,
+.track-number-link,
+.track-number-play:hover,
+.track-number-link:hover,
+.track.is-playing .track-number-play {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0 !important;
+  outline: none;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0;
+  color: var(--yellow);
+  font: 700 18px/1 Arial,sans-serif;
+  min-width: 40px;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.track-number-play::before,
+.track-number-link::before,
+.track-number-play:hover::before,
+.track-number-link:hover::before { content: none !important; }
+.track-number-play:focus-visible,
+.track-number-link:focus-visible { outline: 1px dashed var(--yellow) !important; outline-offset: 3px; }
+
+/* Flat icon-only player (no glyph-enclosing circle or button frame). */
+.track-number-play, .track-number-link,
+.track-number-play:hover, .track-number-link:hover,
+.track.is-playing .track-number-play {
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--yellow) !important;
+  font-size: 0 !important; /* Hide platform-dependent circled play glyph */
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.track-number-play::before, .track-number-link::before,
+.track-number-play:hover::before, .track-number-link:hover::before {
+  content: "" !important;
+  display: block;
+  width: 20px;
+  height: 22px;
+  background: var(--yellow);
+  clip-path: polygon(5% 0, 100% 50%, 5% 100%);
+  font-size: 0;
+}
+.track-number-play[aria-pressed="true"]::before,
+.track-number-play[aria-pressed="true"]:hover::before {
+  width: 20px;
+  height: 22px;
+  clip-path: polygon(0 0, 36% 0, 36% 100%, 0 100%, 0 0, 64% 0, 100% 0, 100% 100%, 64% 100%, 64% 0);
+}
+.track-number-play:focus-visible, .track-number-link:focus-visible {
+  outline: 1px dashed var(--yellow) !important;
+  outline-offset: 0;
+}
