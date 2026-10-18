@@ -1,11 +1,21 @@
-HYVE表示復旧パッチ（2026-10-18）
+HYVE 表示復旧パッチ（2026-10-18）
 
-GitHubリポジトリの js/main.js のみ、このファイルで置き換えてCommitしてください。
-管理画面設定・data/site.json・HTML・CSSを上書きしないでください。
+問題: main.js の safeAudioUrl() が未定義のため、代表曲の1行目で例外が発生し、リリース一覧とSNSリンクまで描画されなくなっていました。
 
-修正点:
-1. 未定義だった safeAudioUrl を定義し、描画処理の中断を解消。
-2. 空文字URLが現在のサイトURLに化ける問題を修正。
+変更ファイルは2個だけです:
+  index.html : 読み込みURLのバージョン番号更新（古いJSキャッシュ対策）
+  js/main.js : safeAudioUrlを定義（空白URLを拒否）
 
-確認: リリース9件、ヘッダーアイコン、最下部リンク、試聴曲一覧の再表示。
-音源未登録の曲は外部リンクを表示します。
+data/site.json、admin/config.yml、CSS、画像は一切上書きしないでください。
+
+GitHubの main ブランチの以下2ファイルを必ず更新:
+  https://github.com/hyve-hard/hyve-hard.github.io/blob/main/index.html
+  https://github.com/hyve-hard/hyve-hard.github.io/blob/main/js/main.js
+
+反映後の確認:
+  https://raw.githubusercontent.com/hyve-hard/hyve-hard.github.io/main/js/main.js
+に「const safeAudioUrl =」という行があることを確認してください。
+  https://hyve-hard.github.io/
+で代表曲とVOL/EP作品、SNSリンクが戻ったことを確認してください。
+
+注: サイトのデプロイと実端末での再生は未検証です。

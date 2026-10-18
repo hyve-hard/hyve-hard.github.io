@@ -9,6 +9,12 @@
     const data = await response.json();
     const text = (value) => String(value ?? '');
     const safeUrl = (value) => { try { const u = new URL(String(value), location.href); return ['https:', 'http:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } };
+    // Prevent a missing function from stopping the entire page render.
+    // Absolute HTTPS URLs and local /assets/... paths are supported.
+    const safeAudioUrl = (value) => {
+      if (typeof value !== 'string' || !value.trim()) return '';
+      return safeUrl(value.trim());
+    };
     const settings = data.settings || {};
     const audio = document.getElementById('hyveAudio');
     let activeRow = null;
