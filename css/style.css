@@ -224,3 +224,8 @@ body{font-family:Inter,'Noto Sans JP','Helvetica Neue',Arial,sans-serif;font-fea
   outline: 1px dashed var(--yellow) !important;
   outline-offset: 0;
 }
+
+/* Linked album title beside each track */
+a.track-release-link {cursor:pointer;pointer-events:auto;color:var(--yellow);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px;transition:text-decoration-color .15s,color .15s}
+a.track-release-link:hover,a.track-release-link:focus-visible{text-decoration-color:currentColor;color:#fff}
+span.track-release-link{color:#999;cursor:default}

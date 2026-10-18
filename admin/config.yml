@@ -114,6 +114,11 @@ collections:
         name: release
         widget: string
         required: false
+      - label: アルバムページURL（収録作品名リンク用）
+        name: albumUrl
+        widget: string
+        required: false
+        hint: 未入力時は「リリース作品」に登録された同名の作品URLを使います。
       - label: 試聴先URL
         name: url
         widget: string

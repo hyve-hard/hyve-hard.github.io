@@ -66,10 +66,27 @@
       const row=node('article','track');
       const trackNumber=String(index+1).padStart(2,'0');
       const details=node('div'); details.append(node('div','track-title',track.title),node('div','track-artist',track.artist));row.append(details);
-      row.append(node('div','track-release',track.release));
+      // Album destinations are separate from the track preview destination.
+      // CMS `albumUrl` has priority; old entries still work through matching
+      // release records, then (legacy) `track.url` as a last resort.
+      const normalizeTitle = s => String(s || '').normalize('NFKC').toLowerCase().replace(/[\s.：:・_\-]/g, '');
+      const matchedRelease = (data.releases || []).find(r => normalizeTitle(r.title) === normalizeTitle(track.release));
+      const releaseUrl = safeUrl(track.albumUrl) || safeUrl(matchedRelease?.url) || safeUrl(track.url);
+      const releaseName = String(track.release || '').trim();
+      if (releaseName) {
+        const releaseLink = node(releaseUrl ? 'a' : 'span','track-release track-release-link',releaseName);
+        if (releaseUrl) {
+          releaseLink.href = releaseUrl;
+          releaseLink.target = '_blank';
+          releaseLink.rel = 'noopener noreferrer';
+          releaseLink.title = releaseName + ' のアルバムページへ';
+          releaseLink.setAttribute('aria-label',releaseName + ' のアルバムページを新しいタブで開く');
+        }
+        row.append(releaseLink);
+      }
       const audioUrl = safeAudioUrl(track.audioUrl);
       if (audioUrl && audio) {
-        const button=node('button','track-number track-number-play',trackNumber);
+        const button=node('button','track-number track-number-play','▶');
         button.dataset.number=trackNumber;
         button.type='button';
         button.setAttribute('aria-label',text(track.title) + ' を再生');
@@ -85,7 +102,7 @@
             else { try {await audio.play();} catch {if(status)status.textContent='再生できません。音源をご確認ください。';} }
             return;
           }
-          if(activeRow) { activeRow.classList.remove('is-active','is-playing'); if(activeButton) {activeButton.textContent=activeButton.dataset.number;activeButton.setAttribute('aria-pressed','false');} if(activeSeek) {activeSeek.disabled=true;} }
+          if(activeRow) { activeRow.classList.remove('is-active','is-playing'); if(activeButton) {activeButton.textContent='▶';activeButton.setAttribute('aria-pressed','false');} if(activeSeek) {activeSeek.disabled=true;} }
           activeRow=row; activeButton=button; activeSeek=seek;
           row.classList.add('is-active'); seek.disabled=false;
           audio.src=audioUrl; audio.load();
@@ -100,7 +117,7 @@
         row.prepend(button);
         row.append(seek);
       } else {
-        const link=node('a','track-number track-number-link',trackNumber);
+        const link=node('a','track-number track-number-link','▶');
         link.href=safeUrl(track.url)||'#listen';link.target='_blank';link.rel='noopener noreferrer';
         link.title=text(track.title)+' を外部で聴く';
         link.setAttribute('aria-label',text(track.title)+' を外部で聴く');
