@@ -11,3 +11,21 @@
 .section-pad{padding-top:65px;padding-bottom:65px}.release-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
 .release-cover img~.cover-label,.release-cover img~.cover-title{display:none}
 @media(max-width:740px){.hero{min-height:300px}.hero h1.hero-single-line{font-size:clamp(30px,8vw,50px)}.section-pad{padding-top:49px;padding-bottom:49px}.release-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+
+/* HYVE 2026: stable designed hero + official title logo */
+.topbar{gap:clamp(10px,2.2vw,30px)}
+.brand{flex:0 0 auto;line-height:0}
+.brand img{display:block;width:clamp(104px,12vw,160px);height:auto;max-height:52px;object-fit:contain}
+.topbar nav{margin-left:auto}
+.header-social{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.header-social a{width:27px;height:27px;border:1px solid #77775e;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--yellow);font-size:13px;font-weight:900;line-height:1}
+.header-social a:hover{background:var(--yellow);color:#080808}
+.hero h1{color:var(--yellow);font-size:clamp(45px,7.4vw,104px);line-height:.92}
+.hero h1 span{color:var(--yellow)}
+.release-groups{display:grid;gap:40px}
+.release-group h3{font-size:15px;font-weight:900;letter-spacing:1.4px;color:var(--yellow);margin:0 0 17px;padding-bottom:10px;border-bottom:1px solid #444435}
+.release-group h3 span{color:#f3f3ee}
+.release-group[hidden]{display:none}
+@media(max-width:900px){.topbar nav{gap:10px}.topbar nav a{font-size:10px;letter-spacing:.4px}}
+@media(max-width:740px){.topbar{height:64px;gap:10px}.brand img{width:100px;max-height:43px}.topbar nav{gap:9px}.topbar nav a{font-size:9px}.topbar nav a:nth-child(3){display:none}.header-social{gap:4px}.header-social a{width:24px;height:24px;font-size:11px}.hero h1{font-size:clamp(42px,10vw,70px)}.release-groups{gap:28px}}
+@media(max-width:390px){.topbar nav a:nth-child(2){display:none}.brand img{width:88px}}

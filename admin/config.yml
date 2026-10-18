@@ -20,10 +20,6 @@ collections:
       widget: object
       collapsed: true
       fields:
-      - label: メイン見出し
-        name: heroTitle
-        widget: string
-        required: false
       - label: サブタイトル
         name: heroSubtitle
         widget: string
@@ -44,11 +40,23 @@ collections:
         name: bandcampUrl
         widget: string
         required: false
+      - label: X URL（ヘッダーアイコン用）
+        name: xUrl
+        widget: string
+        required: false
+      - label: YouTube URL（ヘッダーアイコン用）
+        name: youtubeUrl
+        widget: string
+        required: false
+      - label: SoundCloud URL（ヘッダーアイコン用）
+        name: soundcloudUrl
+        widget: string
+        required: false
       - label: SNS・配信リンク URL
         name: socialUrl
         widget: string
         required: false
-    - label: リリース作品（ドラッグで並べ替え可能）
+    - label: リリース作品（分類でVOL / EPを自動振り分け）
       name: releases
       widget: list
       collapsed: false
