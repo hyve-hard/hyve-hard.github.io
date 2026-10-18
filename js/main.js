@@ -25,21 +25,36 @@
       row.append(node('div','track-release',track.release));
       const link=node('a','track-action','LISTEN ↗');link.href=safeUrl(track.url)||'#listen';link.target='_blank';link.rel='noopener noreferrer';row.append(link);featured.append(row);
     });
-    // Only render verified destinations. Never point a social icon at an unrelated service.
-    const socialItems = [
-      ['BANDCAMP', settings.bandcampUrl || 'https://hyve-hard.bandcamp.com/', 'B'],
-      ['X', settings.xUrl, '𝕏'],
-      ['YOUTUBE', settings.youtubeUrl, '▶'],
-      ['SOUNDCLOUD', settings.soundcloudUrl, '☁']
+    // Show only confirmed service destinations; all icons use real brand SVG paths.
+    const services = [
+      {label:'Bandcamp', key:'bandcampUrl', fallback:'https://hyve-hard.bandcamp.com/', icon:'bandcamp'},
+      {label:'Spotify', key:'spotifyUrl', icon:'spotify'},
+      {label:'Apple Music', key:'appleMusicUrl', icon:'apple'},
+      {label:'SoundCloud', key:'soundcloudUrl', icon:'soundcloud'},
+      {label:'X', key:'xUrl', icon:'x-twitter'},
+      {label:'YouTube', key:'youtubeUrl', icon:'youtube'}
     ];
+    const iconUrl = (name) => 'assets/icons/' + name + '.svg';
+    const icon = (name) => { const img = new Image(); img.src = iconUrl(name); img.alt = ''; img.setAttribute('aria-hidden','true'); return img; };
     const socialNav = document.getElementById('headerSocial');
     socialNav.replaceChildren();
-    socialItems.forEach(([name, url, symbol]) => {
-      const href = safeUrl(url);
+    services.forEach(s => {
+      const href = safeUrl(settings[s.key] || s.fallback);
       if (!href) return;
-      const a = document.createElement('a');a.href=href;a.target='_blank';a.rel='noopener noreferrer';
-      a.setAttribute('aria-label',name);a.title=name;a.textContent=symbol;socialNav.append(a);
+      const a = node('a'); a.href = href; a.target='_blank'; a.rel='noopener noreferrer';
+      a.title=s.label; a.setAttribute('aria-label',s.label); a.append(icon(s.icon)); socialNav.append(a);
     });
+    const streamingLinks = document.getElementById('streamingLinks');
+    streamingLinks.replaceChildren();
+    services.slice(0,4).forEach(s => {
+      const href = safeUrl(settings[s.key] || s.fallback);
+      if (!href) return;
+      const a = node('a'); a.href=href;a.target='_blank';a.rel='noopener noreferrer';
+      a.append(icon(s.icon), node('span','',s.label.toUpperCase() + ' ↗'));
+      streamingLinks.append(a);
+    });
+    const note=document.getElementById('streamingLinkNote');
+    if(note) note.hidden=services.slice(0,4).every(s=>safeUrl(settings[s.key] || s.fallback));
     volReleases.replaceChildren();epReleases.replaceChildren();otherReleases.replaceChildren();
     (data.releases || []).forEach((release) => {
       const card=node('a','release-card');card.href=safeUrl(release.url)||'#releases';card.target='_blank';card.rel='noopener noreferrer';card.setAttribute('aria-label',release.title+' をBandcampで開く');

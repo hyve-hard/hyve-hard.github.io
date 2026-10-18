@@ -1,13 +1,13 @@
-# HYVE 公式サイト 更新版
+# HYVE 更新版（2026-10-18）
 
-- ヘッダーのHYVE表記を正式ロゴ画像に変更
-- ENTER THE HYVE. はHTML固定デザイン。CMSのheroTitleは表示に使われず、CMS項目から除外
-- Releases: VOLシリーズ / EPシリーズに自動分類（その他は必要な場合のみ）
-- HOSTED BY NIZIKAWA & S-DON & K→CHOH
-- ヘッダーにSNS小アイコン。Bandcampは既存URLを使用。X・YouTube・SoundCloudは管理画面「サイト基本設定」に正しいURLを設定すると自動表示
-
-## 反映
-ZIPを解凍し、フォルダそのものではなく中身一式をGitHubリポジトリ `hyve-hard/hyve-hard.github.io` のルートにアップロード・コミット。既存ファイルの置換を許可してください。
+- ENTER THE HYVE：HYVEのみ黄色、その他は白。字間をわずかに調整。
+- STAY IN THE HYVE：HYVEのみ黄色。
+- ヘッダー：HYVEロゴの右に、ブランドアイコンを単色黄色で表示。
+- 下部：Bandcamp / Spotify / Apple Music / SoundCloud の確認できたリンクのみ掲載。
+- 管理画面：Spotify URL / Apple Music URL を任意入力で追加。
+- 既存のリリース・ジャケット・管理画面を保持。
 
 ## 注意
-管理画面に旧heroTitleデータが残っていても、今後はサイトの見出しに反映されません。
+Spotify/Apple Music/SoundCloudのHYVE公式URLは確認できなかったため空欄です。管理画面から正しいURLを入れるとアイコン・リンクが自動表示されます。Bandcampは入力済みです。
+
+GitHubにアップロードする際には、展開したフォルダの **中身** をリポジトリ直下に置いてください。現在GitHub側で編集したdata/site.jsonがある場合は上書きに注意してください。

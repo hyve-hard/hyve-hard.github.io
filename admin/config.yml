@@ -48,6 +48,14 @@ collections:
         name: youtubeUrl
         widget: string
         required: false
+      - label: Spotify URL（ヘッダー・フッター）
+        name: spotifyUrl
+        widget: string
+        required: false
+      - label: Apple Music URL（ヘッダー・フッター）
+        name: appleMusicUrl
+        widget: string
+        required: false
       - label: SoundCloud URL（ヘッダーアイコン用）
         name: soundcloudUrl
         widget: string
