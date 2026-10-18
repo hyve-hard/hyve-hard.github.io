@@ -4,3 +4,10 @@
 .hero.section-pad{padding-top:60px;padding-bottom:46px}
 .hero-actions{margin-top:20px}
 @media(max-width:740px){.hero.section-pad{padding-top:46px;padding-bottom:35px}.hero-desc{font-size:12px;line-height:1.8}.hero-floor{margin-top:26px}}
+
+/* Official compact presentation, optimized for cover-first browsing */
+.hero h1.hero-single-line{font-size:clamp(36px,6vw,76px);letter-spacing:-.025em;line-height:1.03;color:var(--yellow)}
+.hero{min-height:330px}.hero.section-pad{padding-top:45px;padding-bottom:35px}
+.section-pad{padding-top:65px;padding-bottom:65px}.release-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
+.release-cover img~.cover-label,.release-cover img~.cover-title{display:none}
+@media(max-width:740px){.hero{min-height:300px}.hero h1.hero-single-line{font-size:clamp(30px,8vw,50px)}.section-pad{padding-top:49px;padding-bottom:49px}.release-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}

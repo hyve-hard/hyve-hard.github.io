@@ -1,0 +1,6 @@
+HYVE ヒーロー縮小版
+変更対象: css/style.css のみ
+・ヒーロー高さ: desktop 490px / mobile 420px
+・ENTER THE HYVE 見出し縮小
+・上下余白とボタンまでの間隔を圧縮
+アップロード時には css/style.css のみ上書きでもOKです。

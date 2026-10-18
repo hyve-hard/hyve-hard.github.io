@@ -1,0 +1,104 @@
+backend:
+  name: github
+  repo: hyve-hard/hyve-hard.github.io
+  branch: main
+  auth_methods:
+  - token
+media_folder: assets
+public_folder: /assets
+collections:
+- name: site
+  label: サイト管理
+  files:
+  - label: HYVE 公式サイト
+    name: homepage
+    file: data/site.json
+    format: json
+    fields:
+    - label: サイト基本設定
+      name: settings
+      widget: object
+      collapsed: true
+      fields:
+      - label: メイン見出し
+        name: heroTitle
+        widget: string
+        required: false
+      - label: サブタイトル
+        name: heroSubtitle
+        widget: string
+        required: false
+      - label: 短い紹介文（日本語）
+        name: introJa
+        widget: text
+        required: false
+      - label: 短い紹介文（英語）
+        name: introEn
+        widget: text
+        required: false
+      - label: 長い紹介文（日本語）
+        name: aboutJa
+        widget: text
+        required: false
+      - label: Bandcamp URL
+        name: bandcampUrl
+        widget: string
+        required: false
+      - label: SNS・配信リンク URL
+        name: socialUrl
+        widget: string
+        required: false
+    - label: リリース作品（ドラッグで並べ替え可能）
+      name: releases
+      widget: list
+      collapsed: false
+      required: false
+      summary: '{{fields.title}}'
+      fields:
+      - label: 作品名
+        name: title
+        widget: string
+        required: false
+      - label: 発売年月（表示用）
+        name: date
+        widget: string
+        required: false
+      - label: 分類
+        name: kind
+        widget: select
+        options:
+        - COMPILATION
+        - EP
+        - SINGLE
+        - OTHER
+        required: false
+      - label: ジャケット
+        name: cover
+        widget: image
+        required: false
+      - label: 作品URL
+        name: url
+        widget: string
+        required: false
+    - label: 代表曲（ドラッグで並べ替え可能）
+      name: featured
+      widget: list
+      required: false
+      summary: '{{fields.title}}'
+      fields:
+      - label: 曲名
+        name: title
+        widget: string
+        required: false
+      - label: アーティスト
+        name: artist
+        widget: string
+        required: false
+      - label: 収録作品
+        name: release
+        widget: string
+        required: false
+      - label: 試聴先URL
+        name: url
+        widget: string
+        required: false
