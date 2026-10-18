@@ -11,19 +11,32 @@
     const safeUrl = (value) => { try { const u = new URL(String(value), location.href); return ['https:', 'http:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } };
     const settings = data.settings || {};
     const audio = document.getElementById('hyveAudio');
-    const audioTitle = document.getElementById('audioTrackTitle');
-    const audioArtist = document.getElementById('audioTrackArtist');
-    const audioStatus = document.getElementById('audioStatus');
-    const safeAudioUrl = (value) => {
-      const url = safeUrl(value);
-      if (!url) return '';
-      const parsed = new URL(url);
-      // GitHub Pages asset or direct audio URL only; don't accept platform pages as audio.
-      if (!/\.(mp3|m4a|ogg|oga|wav|aac|flac)(?:$|\?)/i.test(parsed.pathname + parsed.search)) return '';
-      return url;
+    let activeRow = null;
+    let activeButton = null;
+    let activeSeek = null;
+    const status = document.getElementById('audioStatus');
+    const updateProgress = () => {
+      if (!audio || !activeSeek) return;
+      const duration = Number.isFinite(audio.duration) ? audio.duration : 0;
+      const ratio = duration > 0 ? Math.min(100, Math.max(0, audio.currentTime / duration * 100)) : 0;
+      activeSeek.value = String(ratio);
+      activeSeek.style.setProperty('--progress', ratio + '%');
+      activeSeek.setAttribute('aria-valuetext', duration ? Math.floor(audio.currentTime) + ' / ' + Math.floor(duration) + '秒' : '読み込み中');
+    };
+    const setPlaybackUI = (playing) => {
+      if (!activeButton) return;
+      activeButton.textContent = playing ? '❚❚' : '▶';
+      activeButton.setAttribute('aria-label', playing ? '一時停止' : '再生');
+      activeButton.setAttribute('aria-pressed', String(playing));
+      activeRow?.classList.toggle('is-playing', playing);
     };
     if (audio) {
-      audio.addEventListener('error', () => { if (audioStatus) audioStatus.textContent = '音源を読み込めません。音声ファイルのURLと公開状態をご確認ください。'; });
+      audio.addEventListener('timeupdate', updateProgress);
+      audio.addEventListener('loadedmetadata', updateProgress);
+      audio.addEventListener('play', () => { setPlaybackUI(true); if(status) status.textContent='再生中'; });
+      audio.addEventListener('pause', () => setPlaybackUI(false));
+      audio.addEventListener('ended', () => { setPlaybackUI(false); updateProgress(); if(status) status.textContent='再生が終了しました'; });
+      audio.addEventListener('error', () => {setPlaybackUI(false);if(status) status.textContent='音源の読み込みに失敗しました。登録した音源URLをご確認ください。';});
     }
     // Verified destination defaults. CMS values take precedence when present.
     // These fallbacks keep the requested links accessible until CMS saves propagate.
@@ -49,20 +62,38 @@
       row.append(node('div','track-release',track.release));
       const audioUrl = safeAudioUrl(track.audioUrl);
       if (audioUrl && audio) {
-        const button=node('button','track-action playable','▶ PLAY');
-        button.type='button';button.setAttribute('aria-label', text(track.title) + ' を再生');
-        button.addEventListener('click', () => {
-          if (audio.src !== audioUrl) { audio.src=audioUrl;audio.load(); }
-          audioTitle.textContent=text(track.title || 'UNTITLED');
-          audioArtist.textContent=text(track.artist);
-          if (audioStatus) audioStatus.textContent='音源を読み込んでいます…';
-          audio.play().then(() => { if (audioStatus) audioStatus.textContent='再生中'; }).catch(() => {
-            if (audioStatus) audioStatus.textContent='再生できません。プレーヤーの再生ボタンか、音源URLをご確認ください。';
-          });
+        const button=node('button','track-action inline-play','▶');
+        button.type='button';
+        button.setAttribute('aria-label',text(track.title) + ' を再生');
+        button.setAttribute('aria-pressed','false');
+        const seek=node('input','track-progress');
+        seek.type='range'; seek.min='0'; seek.max='100'; seek.step='0.1'; seek.value='0';
+        seek.setAttribute('aria-label',text(track.title) + ' の再生位置');
+        seek.style.setProperty('--progress','0%');
+        seek.disabled=true;
+        button.addEventListener('click', async () => {
+          if (activeRow === row) {
+            if (!audio.paused) audio.pause();
+            else { try {await audio.play();} catch {if(status)status.textContent='再生できません。音源をご確認ください。';} }
+            return;
+          }
+          if(activeRow) { activeRow.classList.remove('is-active','is-playing'); if(activeButton) {activeButton.textContent='▶';activeButton.setAttribute('aria-pressed','false');} if(activeSeek) {activeSeek.disabled=true;} }
+          activeRow=row; activeButton=button; activeSeek=seek;
+          row.classList.add('is-active'); seek.disabled=false;
+          audio.src=audioUrl; audio.load();
+          if(status) status.textContent=text(track.title)+' を読み込んでいます…';
+          try { await audio.play(); } catch {if(status)status.textContent='再生できません。ファイルが公開されているか確認してください。';}
         });
-        row.append(button);
+        seek.addEventListener('input', () => {
+          if(activeRow!==row || !Number.isFinite(audio.duration) || audio.duration<=0) return;
+          audio.currentTime=audio.duration*Number(seek.value)/100;
+          updateProgress();
+        });
+        row.append(button,seek);
       } else {
-        const link=node('a','track-action','LISTEN ↗');link.href=safeUrl(track.url)||'#listen';link.target='_blank';link.rel='noopener noreferrer';row.append(link);
+        const link=node('a','track-action','LISTEN ↗');
+        link.href=safeUrl(track.url)||'#listen';link.target='_blank';link.rel='noopener noreferrer';
+        row.append(link);
       }
       featured.append(row);
     });
