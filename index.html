@@ -1,23 +1,49 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="HYVE — Japanese Hard Dance Label. We Are Hard Dance. Discover our music and releases.">
+  <meta property="og:title" content="HYVE | We Are Hard Dance.">
+  <meta property="og:description" content="ENTER THE HYVE. Japanese Hard Dance Label.">
+  <meta property="og:type" content="website">
   <title>HYVE | We Are Hard Dance.</title>
-  <style>
-    body {
-      background: #000;
-      color: #ffe500;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 100px 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-  <h1>HYVE</h1>
-  <h2>ENTER THE HYVE.</h2>
-  <p>We Are Hard Dance.</p>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="HYVEトップ">◢◧ <span>HYVE</span></a>
+    <nav aria-label="サイト内メニュー"><a href="#listen">LISTEN</a><a href="#releases">RELEASES</a><a href="#about">ABOUT</a><a href="#connect">CONNECT</a></nav>
+  </header>
+  <main id="top">
+    <section class="hero section-pad">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="eyebrow">JAPANESE HARD DANCE LABEL <span class="pulse"></span> EST. 2021</div>
+      <p class="hero-label">YOUR NEXT RAVE STARTS HERE</p>
+      <h1><span>ENTER</span><br>THE <em>HYVE.</em></h1>
+      <p class="hero-sub">We Are Hard Dance.</p>
+      <p class="hero-desc">日本発のHARD DANCEレーベル。<br>クラブミュージックの熱量を、世界へ。</p>
+      <div class="hero-actions"><a class="btn primary" href="#listen">▶ START LISTENING</a><a class="btn secondary" href="#releases">EXPLORE RELEASES ↗</a></div>
+      <div class="hero-floor">HARD DANCE · RAVE · CLUB SOUNDS <span>SCROLL TO DISCOVER ↓</span></div>
+    </section>
+    <section id="listen" class="section-pad section-surface">
+      <div class="section-heading"><div><p class="kicker">01 / DISCOVER THE SOUND</p><h2>START <span>LISTENING.</span></h2></div><p>HYVEを初めて知ったあなたへ。<br>まずは、この5曲から。</p></div>
+      <div id="featured" class="track-list"><p class="loading">Loading tracks...</p></div>
+      <p class="tiny-note">各曲のLISTENボタンからBandcampの収録作品を開けます。ページ内での音声再生機能は正式な埋め込みプレーヤー追加後に対応します。</p>
+      <div class="inline-actions"><a class="btn primary" href="https://hyve-hard.bandcamp.com/" target="_blank" rel="noopener">ALL TRACKS ON BANDCAMP ↗</a></div>
+    </section>
+    <section id="releases" class="section-pad">
+      <div class="section-heading"><div><p class="kicker">02 / DISCOGRAPHY</p><h2>OUR <span>RELEASES.</span></h2></div><p>2021 — PRESENT<br>COMPILATIONS & EPs</p></div>
+      <div id="releasesGrid" class="release-grid"><p class="loading">Loading releases...</p></div>
+    </section>
+    <section id="about" class="section-pad section-about">
+      <div><p class="kicker">03 / ABOUT THE LABEL</p><h2>WE ARE<br><span>HARD DANCE.</span></h2></div>
+      <div class="about-copy"><p>HYVEは、日本発のHARD DANCEレーベル。BPM150周辺のクラブサウンドを中心に、多様なHARD DANCEを発信しています。</p><p lang="en">HYVE is a Japanese Hard Dance label specializing in club sounds around 150 BPM. Discover our releases and the artists behind the music.</p><div class="about-meta"><span>JAPAN</span><span>EST. 2021</span><span>HOSTED BY NIZIKAWA & S-DON</span></div></div>
+    </section>
+    <section id="connect" class="section-pad section-surface connect-section"><p class="kicker">04 / KEEP IN TOUCH</p><h2>STAY IN <span>THE HYVE.</span></h2><p>気に入ったら、ぜひフォローしてください。新しいリリースやイベント情報をお届けします。</p><div class="links"><a href="https://hyve-hard.bandcamp.com/" target="_blank" rel="noopener">BANDCAMP ↗</a><a href="https://lit.link/hyve" target="_blank" rel="noopener">SOCIAL & STREAMING ↗</a></div><p class="tiny-note">SNSの個別URLは確認でき次第追加できます。</p></section>
+  </main>
+  <footer><span>HYVE © 2026</span><span>WE ARE HARD DANCE.</span><a href="#top">BACK TO TOP ↑</a></footer>
 </body>
 </html>

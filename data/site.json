@@ -1,0 +1,20 @@
+{
+  "releases": [
+    {"title":"HYVE VOL.6","date":"2026.04","kind":"COMPILATION","url":"https://hyve-hard.bandcamp.com/album/hyve-vol-6","cover":"assets/vol6.jpg"},
+    {"title":"EP-03: Ravelet","date":"2025.10","kind":"EP","url":"https://hyve-hard.bandcamp.com/album/ep-03-ravelet","cover":"assets/ravelet.jpg"},
+    {"title":"HYVE Vol.5","date":"2025.04","kind":"COMPILATION","url":"https://hyve-hard.bandcamp.com/album/hyve-vol-5","cover":"assets/vol5.jpg"},
+    {"title":"EP-02: Techno Sunrise","date":"2024.10","kind":"EP","url":"https://hyve-hard.bandcamp.com/album/ep-02-techno-sunrise","cover":"assets/techno-sunrise.jpg"},
+    {"title":"HYVE Vol.4","date":"2024.04","kind":"COMPILATION","url":"https://hyve-hard.bandcamp.com/album/hyve-vol-4","cover":"assets/vol4.jpg"},
+    {"title":"EP-01: Donk Island","date":"2022.10","kind":"EP","url":"https://hyve-hard.bandcamp.com/album/ep-01-donk-island","cover":"assets/donk-island.jpg"},
+    {"title":"HYVE Vol.3","date":"2022.04","kind":"COMPILATION","url":"https://hyve-hard.bandcamp.com/album/hyve-vol-3","cover":"assets/vol3.jpg"},
+    {"title":"HYVE Vol.2","date":"2021.10","kind":"COMPILATION","url":"https://hyve-hard.bandcamp.com/album/hyve-vol-2","cover":"assets/vol2.jpg"},
+    {"title":"HYVE Vol.1","date":"2021.04","kind":"COMPILATION","url":"https://hyve-hard.bandcamp.com/album/hyve-vol-1","cover":"assets/vol1.jpg"}
+  ],
+  "featured": [
+    {"title":"CHAIN REACTION","artist":"rejection","release":"HYVE VOL.6","url":"https://hyve-hard.bandcamp.com/album/hyve-vol-6"},
+    {"title":"Make Slappin'","artist":"s-don","release":"HYVE VOL.6","url":"https://hyve-hard.bandcamp.com/album/hyve-vol-6"},
+    {"title":"Ritual Avalanche","artist":"Nizikawa","release":"HYVE VOL.6","url":"https://hyve-hard.bandcamp.com/album/hyve-vol-6"},
+    {"title":"FEED YOUR SOUL","artist":"DJ Noriken","release":"HYVE VOL.6","url":"https://hyve-hard.bandcamp.com/album/hyve-vol-6"},
+    {"title":"Rave Control","artist":"s-don","release":"EP-03: Ravelet","url":"https://hyve-hard.bandcamp.com/album/ep-03-ravelet"}
+  ]
+}
