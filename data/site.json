@@ -83,31 +83,36 @@
       "title": "CHAIN REACTION",
       "artist": "rejection",
       "release": "HYVE VOL.6",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-6"
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-6",
+      "audioUrl": "/assets/audio/01 CHAIN REACTION.mp3"
     },
     {
-      "title": "Make Slappin'",
-      "artist": "s-don",
-      "release": "HYVE VOL.6",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-6"
+      "title": "Retrospect",
+      "artist": "Sanaas",
+      "release": "HYVE VOL.1",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-1",
+      "audioUrl": "/assets/audio/12 Retrospect.mp3"
     },
     {
-      "title": "Ritual Avalanche",
-      "artist": "Nizikawa",
-      "release": "HYVE VOL.6",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-6"
-    },
-    {
-      "title": "FEED YOUR SOUL",
+      "title": "Shapeshifter",
       "artist": "DJ Noriken",
-      "release": "HYVE VOL.6",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-6"
+      "release": "HYVE VOL.4",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-4",
+      "audioUrl": "/assets/audio/11 Shapeshifter.mp3"
     },
     {
-      "title": "Rave Control",
-      "artist": "s-don",
-      "release": "EP-03: Ravelet",
-      "url": "https://hyve-hard.bandcamp.com/album/ep-03-ravelet"
+      "title": "RUTTP",
+      "artist": "BCM",
+      "release": "HYVE VOL.3",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-3",
+      "audioUrl": "/assets/audio/04 RUTTP.mp3"
+    },
+    {
+      "title": "caught up",
+      "artist": "the dig account",
+      "release": "EP-01: Donk Island",
+      "url": "https://hyve-hard.bandcamp.com/album/ep-01-donk-island",
+      "audioUrl": "/assets/audio/01 caught up.mp3"
     }
   ]
 }
