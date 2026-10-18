@@ -4,12 +4,21 @@
   const epReleases = document.getElementById('epReleases');
   const otherReleases = document.getElementById('otherReleases');
   try {
-    const response = await fetch('data/site.json');
+    const response = await fetch('data/site.json?fresh=' + Date.now(), {cache:'no-store'});
     if (!response.ok) throw new Error('site.json not loaded');
     const data = await response.json();
     const text = (value) => String(value ?? '');
     const safeUrl = (value) => { try { const u = new URL(String(value), location.href); return ['https:', 'http:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } };
     const settings = data.settings || {};
+    // Verified destination defaults. CMS values take precedence when present.
+    // These fallbacks keep the requested links accessible until CMS saves propagate.
+    const serviceDefaults = {
+      bandcampUrl: 'https://hyve-hard.bandcamp.com/',
+      spotifyUrl: 'https://open.spotify.com/playlist/1ltd7rxJx5Gp3vjjz230yi',
+      appleMusicUrl: 'https://music.apple.com/jp/search?term=hyve',
+      youtubeUrl: 'https://music.youtube.com/playlist?list=PLRdWvw23-MlSNTOsEVTpqQPJu7VN1eBRS'
+    };
+    const serviceHref = (key, fallback='') => safeUrl(settings[key]) || safeUrl(serviceDefaults[key] || fallback);
     const heroSub = document.querySelector('.hero-sub'); if (heroSub && settings.heroSubtitle) heroSub.textContent = settings.heroSubtitle;
     const heroDesc = document.querySelector('.hero-desc'); if (heroDesc && settings.introJa) heroDesc.textContent = settings.introJa;
     const aboutJa = document.querySelector('.about-copy p:not([lang])'); if (aboutJa && settings.aboutJa) aboutJa.textContent = settings.aboutJa;
@@ -39,7 +48,7 @@
     const socialNav = document.getElementById('headerSocial');
     socialNav.replaceChildren();
     services.forEach(s => {
-      const href = safeUrl(settings[s.key] || s.fallback);
+      const href = serviceHref(s.key, s.fallback);
       if (!href) return;
       const a = node('a'); a.href = href; a.target='_blank'; a.rel='noopener noreferrer';
       a.title=s.label; a.setAttribute('aria-label',s.label); a.append(icon(s.icon)); socialNav.append(a);
@@ -47,14 +56,14 @@
     const streamingLinks = document.getElementById('streamingLinks');
     streamingLinks.replaceChildren();
     services.slice(0,4).forEach(s => {
-      const href = safeUrl(settings[s.key] || s.fallback);
+      const href = serviceHref(s.key, s.fallback);
       if (!href) return;
       const a = node('a'); a.href=href;a.target='_blank';a.rel='noopener noreferrer';
       a.append(icon(s.icon), node('span','',s.label.toUpperCase() + ' ↗'));
       streamingLinks.append(a);
     });
     const note=document.getElementById('streamingLinkNote');
-    if(note) note.hidden=services.slice(0,4).every(s=>safeUrl(settings[s.key] || s.fallback));
+    if(note) note.hidden=services.slice(0,4).every(s=>serviceHref(s.key, s.fallback));
     volReleases.replaceChildren();epReleases.replaceChildren();otherReleases.replaceChildren();
     (data.releases || []).forEach((release) => {
       const card=node('a','release-card');card.href=safeUrl(release.url)||'#releases';card.target='_blank';card.rel='noopener noreferrer';card.setAttribute('aria-label',release.title+' をBandcampで開く');
