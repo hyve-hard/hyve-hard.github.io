@@ -7,7 +7,7 @@
 @media(max-width:740px){.hero.section-pad{padding-top:46px;padding-bottom:35px}.hero-desc{font-size:12px;line-height:1.8}.hero-floor{margin-top:26px}}
 
 /* Official compact presentation, optimized for cover-first browsing */
-.hero h1.hero-single-line{font-size:clamp(36px,6vw,76px);letter-spacing:-.025em;line-height:1.03;color:var(--yellow)}
+.hero h1.hero-single-line{font-size:clamp(36px,6vw,76px);line-height:1.03}
 .hero{min-height:330px}.hero.section-pad{padding-top:45px;padding-bottom:35px}
 .section-pad{padding-top:65px;padding-bottom:65px}.release-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
 .release-cover img~.cover-label,.release-cover img~.cover-title{display:none}
@@ -21,8 +21,8 @@
 .header-social{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .header-social a{width:27px;height:27px;border:1px solid #77775e;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--yellow);font-size:13px;font-weight:900;line-height:1}
 .header-social a:hover{background:var(--yellow);color:#080808}
-.hero h1{color:var(--yellow);font-size:clamp(45px,7.4vw,104px);line-height:.92}
-.hero h1 span{color:var(--yellow)}
+.hero h1{font-size:clamp(45px,7.4vw,104px);line-height:.92}
+
 .release-groups{display:grid;gap:40px}
 .release-group h3{font-size:15px;font-weight:900;letter-spacing:1.4px;color:var(--yellow);margin:0 0 17px;padding-bottom:10px;border-bottom:1px solid #444435}
 .release-group h3 span{color:#f3f3ee}
@@ -54,3 +54,19 @@ body{font-family:Inter,'Noto Sans JP','Helvetica Neue',Arial,sans-serif;font-fea
 @media(max-width:900px){.topbar nav a{font-size:9px}.header-social{gap:7px}.header-social a{width:20px;height:20px}}
 @media(max-width:740px){.topbar{flex-wrap:wrap;height:auto;min-height:62px;padding-top:8px;padding-bottom:8px;row-gap:6px}.brand{margin-right:12px}.brand img{width:91px}.header-social{gap:7px}.header-social a{width:19px;height:19px}.topbar nav{width:100%;order:3;justify-content:flex-start;gap:20px}.topbar nav a:nth-child(3){display:inline}.hero h1{font-size:clamp(42px,10vw,69px);letter-spacing:.003em}}
 @media(max-width:390px){.topbar nav a:nth-child(2){display:inline}.header-social{gap:6px}.header-social a{width:18px;height:18px}}
+
+/* FINAL VERIFIED RULES: HYVE alone uses the brand yellow. */
+.hero h1, .hero h1 span, .hero h1.hero-single-line {color:#f5f5f0;}
+.hero h1 em, .hero h1.hero-single-line em {color:#ffe500; font-style:normal;}
+.hero h1 {letter-spacing:.018em;line-height:1.04;}
+.connect-section h2 {color:#f5f5f0;letter-spacing:.025em;}
+.connect-section h2 span {color:#ffe500;}
+/* Monochrome icons directly beside the HYVE logo. */
+.topbar {justify-content:flex-start;}
+.brand {margin-right:clamp(12px,2vw,25px);}
+.header-social {order:1;gap:9px;margin-right:auto;align-items:center;}
+.topbar nav {order:2;margin-left:auto;}
+.header-social a {border:0;border-radius:0;background:none;color:#ffe500;}
+.header-social a img,.links a img {display:block;width:100%;height:100%;filter:brightness(0) saturate(100%) invert(85%) sepia(97%) saturate(1164%) hue-rotate(359deg) brightness(103%) contrast(107%);}
+.links a img {width:19px;height:19px;flex:0 0 19px;}
+@media(max-width:740px){.hero h1{letter-spacing:.012em}.header-social{margin-right:auto;}}
