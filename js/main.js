@@ -10,6 +10,20 @@
     const text = (value) => String(value ?? '');
     const safeUrl = (value) => { try { const u = new URL(String(value), location.href); return ['https:', 'http:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } };
     const settings = data.settings || {};
+    // Manageable in the CMS: accepts a YouTube / YouTube Music playlist URL or playlist ID.
+    const playlistRaw = String(settings.playerPlaylistUrl || settings.youtubeUrl || 'https://music.youtube.com/playlist?list=PLRdWvw23-MlSNTOsEVTpqQPJu7VN1eBRS');
+    function playlistId(value) {
+      try {
+        const u = new URL(value);
+        if (!['youtube.com','www.youtube.com','music.youtube.com','m.youtube.com','www.youtube-nocookie.com'].includes(u.hostname)) return '';
+        return /^[A-Za-z0-9_-]{10,}$/.test(u.searchParams.get('list') || '') ? u.searchParams.get('list') : '';
+      } catch { return /^[A-Za-z0-9_-]{10,}$/.test(value) ? value : ''; }
+    }
+    const playerList = playlistId(playlistRaw) || 'PLRdWvw23-MlSNTOsEVTpqQPJu7VN1eBRS';
+    const iframe = document.getElementById('hyvePlayer');
+    if (iframe) iframe.src = 'https://www.youtube-nocookie.com/embed/videoseries?list=' + encodeURIComponent(playerList);
+    const playerExternal = document.getElementById('playerExternal');
+    if (playerExternal) playerExternal.href = 'https://music.youtube.com/playlist?list=' + encodeURIComponent(playerList);
     // Verified destination defaults. CMS values take precedence when present.
     // These fallbacks keep the requested links accessible until CMS saves propagate.
     const serviceDefaults = {
@@ -55,7 +69,7 @@
     });
     const streamingLinks = document.getElementById('streamingLinks');
     streamingLinks.replaceChildren();
-    services.slice(0,4).forEach(s => {
+    [services[4], ...services.slice(0,4)].forEach(s => {
       const href = serviceHref(s.key, s.fallback);
       if (!href) return;
       const a = node('a'); a.href=href;a.target='_blank';a.rel='noopener noreferrer';
@@ -63,7 +77,7 @@
       streamingLinks.append(a);
     });
     const note=document.getElementById('streamingLinkNote');
-    if(note) note.hidden=services.slice(0,4).every(s=>serviceHref(s.key, s.fallback));
+    if(note) note.hidden=[services[4], ...services.slice(0,4)].every(s=>serviceHref(s.key, s.fallback));
     volReleases.replaceChildren();epReleases.replaceChildren();otherReleases.replaceChildren();
     (data.releases || []).forEach((release) => {
       const card=node('a','release-card');card.href=safeUrl(release.url)||'#releases';card.target='_blank';card.rel='noopener noreferrer';card.setAttribute('aria-label',release.title+' をBandcampで開く');

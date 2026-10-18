@@ -36,6 +36,10 @@ collections:
         name: aboutJa
         widget: text
         required: false
+      - label: 埋め込みプレーヤーのYouTube / YouTube MusicプレイリストURL
+        name: playerPlaylistUrl
+        widget: string
+        required: false
       - label: Bandcamp URL
         name: bandcampUrl
         widget: string

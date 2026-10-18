@@ -1,14 +1,16 @@
-HYVE URL表示修正パッチ（2026-10-18）
+HYVE プレーヤー + Xフッター更新パッチ
 
-差し替えるファイル：
-  index.html
-  js/main.js
+上書き対象: index.html, css/style.css, js/main.js, admin/config.yml
+既存の data/site.json、assets、管理画面認証ファイルは上書きしません。
 
-※ data/site.json、admin/config.yml、CSS、画像は上書きしません。
-※ 今回指定されたSpotify/Apple Music/YouTube Musicと既存Bandcampを、管理画面で未設定でも表示する初期値として設定しています。
-※ 管理画面から有効な別URLを入力・GitHubに保存できれば、そのURLを優先して表示します。
-※ SoundCloudのURLは未指定なので空欄のままです（CMSで設定可能）。
+変更内容:
+- HYVEのYouTube MusicプレイリストをYouTube埋め込みプレーヤーとして表示
+- プレイリストのURLを管理画面「サイト基本設定」から変更可能（未設定の場合は既存の指定プレイリスト）
+- 最下部のリンク集の先頭にXを追加（X URLは既存の管理画面項目 xUrl を使用）
+- フッター順序は X, Bandcamp, Spotify, Apple Music, SoundCloud
+- XのURLが空の場合は安全のため表示しません。
+- 既存の5曲のLISTENボタンは収録作品への外部リンクとして維持。
 
-確認：GitHubの data/site.json に変更が実際にコミットされているか確認してください。
-管理画面で保存してもコミットが増えなければCMSの認証・権限・保存処理の問題です。
-コミットされているのに古い表示ならGitHub Actions/Pagesの反映とブラウザの強制再読み込みを確認してください。
+重要:
+YouTubeの埋め込みは配信側の設定・地域・権利条件により、一部動画が再生できない場合があります。外部プレイリストリンクも併設しています。
+現在の公開リポジトリへ適用前に4ファイルをバックアップし、GitHubにアップロード後に再生・保存をテストしてください。

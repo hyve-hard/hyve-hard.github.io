@@ -9,8 +9,8 @@
   <meta property="og:description" content="ENTER THE HYVE. Japanese Hard Dance Label.">
   <meta property="og:type" content="website">
   <title>HYVE | We Are Hard Dance.</title>
-  <link rel="stylesheet" href="css/style.css?v=hyve-20261018-impact-restore">
-  <script src="js/main.js?v=hyve-20261018-links-repair3" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=hyve-player-20261018">
+  <script src="js/main.js?v=hyve-player-20261018" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -30,8 +30,12 @@
     </section>
     <section id="listen" class="section-pad section-surface">
       <div class="section-heading"><div><p class="kicker">01 / DISCOVER THE SOUND</p><h2>START <span>LISTENING.</span></h2></div><p>HYVEを初めて知ったあなたへ。<br>まずは、この5曲から。</p></div>
+      <div class="embedded-player" id="embeddedPlayer">
+        <div class="player-heading"><strong>HYVE PLAYLIST</strong><a id="playerExternal" href="https://music.youtube.com/playlist?list=PLRdWvw23-MlSNTOsEVTpqQPJu7VN1eBRS" target="_blank" rel="noopener noreferrer">OPEN PLAYLIST ↗</a></div>
+        <iframe id="hyvePlayer" title="HYVE playlist player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen src="https://www.youtube-nocookie.com/embed/videoseries?list=PLRdWvw23-MlSNTOsEVTpqQPJu7VN1eBRS"></iframe>
+      </div>
       <div id="featured" class="track-list"><p class="loading">Loading tracks...</p></div>
-      <p class="tiny-note">各曲のLISTENボタンからBandcampの収録作品を開けます。ページ内での音声再生機能は正式な埋め込みプレーヤー追加後に対応します。</p>
+      <p class="tiny-note">上のプレーヤーでHYVEの楽曲を再生できます。各曲のLISTENボタンからは収録作品を開けます。埋め込み再生が制限される場合は「OPEN PLAYLIST」をご利用ください。</p>
       <div class="inline-actions"><a class="btn primary" data-setting="bandcamp" href="https://hyve-hard.bandcamp.com/" target="_blank" rel="noopener">ALL TRACKS ON BANDCAMP ↗</a></div>
     </section>
     <section id="releases" class="section-pad">
