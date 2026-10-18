@@ -10,20 +10,21 @@
     const text = (value) => String(value ?? '');
     const safeUrl = (value) => { try { const u = new URL(String(value), location.href); return ['https:', 'http:'].includes(u.protocol) ? u.href : ''; } catch { return ''; } };
     const settings = data.settings || {};
-    // Manageable in the CMS: accepts a YouTube / YouTube Music playlist URL or playlist ID.
-    const playlistRaw = String(settings.playerPlaylistUrl || settings.youtubeUrl || 'https://music.youtube.com/playlist?list=PLRdWvw23-MlSNTOsEVTpqQPJu7VN1eBRS');
-    function playlistId(value) {
-      try {
-        const u = new URL(value);
-        if (!['youtube.com','www.youtube.com','music.youtube.com','m.youtube.com','www.youtube-nocookie.com'].includes(u.hostname)) return '';
-        return /^[A-Za-z0-9_-]{10,}$/.test(u.searchParams.get('list') || '') ? u.searchParams.get('list') : '';
-      } catch { return /^[A-Za-z0-9_-]{10,}$/.test(value) ? value : ''; }
+    const audio = document.getElementById('hyveAudio');
+    const audioTitle = document.getElementById('audioTrackTitle');
+    const audioArtist = document.getElementById('audioTrackArtist');
+    const audioStatus = document.getElementById('audioStatus');
+    const safeAudioUrl = (value) => {
+      const url = safeUrl(value);
+      if (!url) return '';
+      const parsed = new URL(url);
+      // GitHub Pages asset or direct audio URL only; don't accept platform pages as audio.
+      if (!/\.(mp3|m4a|ogg|oga|wav|aac|flac)(?:$|\?)/i.test(parsed.pathname + parsed.search)) return '';
+      return url;
+    };
+    if (audio) {
+      audio.addEventListener('error', () => { if (audioStatus) audioStatus.textContent = '音源を読み込めません。音声ファイルのURLと公開状態をご確認ください。'; });
     }
-    const playerList = playlistId(playlistRaw) || 'PLRdWvw23-MlSNTOsEVTpqQPJu7VN1eBRS';
-    const iframe = document.getElementById('hyvePlayer');
-    if (iframe) iframe.src = 'https://www.youtube-nocookie.com/embed/videoseries?list=' + encodeURIComponent(playerList);
-    const playerExternal = document.getElementById('playerExternal');
-    if (playerExternal) playerExternal.href = 'https://music.youtube.com/playlist?list=' + encodeURIComponent(playerList);
     // Verified destination defaults. CMS values take precedence when present.
     // These fallbacks keep the requested links accessible until CMS saves propagate.
     const serviceDefaults = {
@@ -46,7 +47,24 @@
       const row=node('article','track'); row.append(node('div','track-number',String(index+1).padStart(2,'0')));
       const details=node('div'); details.append(node('div','track-title',track.title),node('div','track-artist',track.artist));row.append(details);
       row.append(node('div','track-release',track.release));
-      const link=node('a','track-action','LISTEN ↗');link.href=safeUrl(track.url)||'#listen';link.target='_blank';link.rel='noopener noreferrer';row.append(link);featured.append(row);
+      const audioUrl = safeAudioUrl(track.audioUrl);
+      if (audioUrl && audio) {
+        const button=node('button','track-action playable','▶ PLAY');
+        button.type='button';button.setAttribute('aria-label', text(track.title) + ' を再生');
+        button.addEventListener('click', () => {
+          if (audio.src !== audioUrl) { audio.src=audioUrl;audio.load(); }
+          audioTitle.textContent=text(track.title || 'UNTITLED');
+          audioArtist.textContent=text(track.artist);
+          if (audioStatus) audioStatus.textContent='音源を読み込んでいます…';
+          audio.play().then(() => { if (audioStatus) audioStatus.textContent='再生中'; }).catch(() => {
+            if (audioStatus) audioStatus.textContent='再生できません。プレーヤーの再生ボタンか、音源URLをご確認ください。';
+          });
+        });
+        row.append(button);
+      } else {
+        const link=node('a','track-action','LISTEN ↗');link.href=safeUrl(track.url)||'#listen';link.target='_blank';link.rel='noopener noreferrer';row.append(link);
+      }
+      featured.append(row);
     });
     // Show only confirmed service destinations; all icons use real brand SVG paths.
     const services = [

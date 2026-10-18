@@ -9,8 +9,8 @@
   <meta property="og:description" content="ENTER THE HYVE. Japanese Hard Dance Label.">
   <meta property="og:type" content="website">
   <title>HYVE | We Are Hard Dance.</title>
-  <link rel="stylesheet" href="css/style.css?v=hyve-player-20261018">
-  <script src="js/main.js?v=hyve-player-20261018" defer></script>
+  <link rel="stylesheet" href="css/style.css?v=hyve-native-audio-20261018-v2">
+  <script src="js/main.js?v=hyve-native-audio-20261018-v2" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -30,12 +30,14 @@
     </section>
     <section id="listen" class="section-pad section-surface">
       <div class="section-heading"><div><p class="kicker">01 / DISCOVER THE SOUND</p><h2>START <span>LISTENING.</span></h2></div><p>HYVEを初めて知ったあなたへ。<br>まずは、この5曲から。</p></div>
-      <div class="embedded-player" id="embeddedPlayer">
-        <div class="player-heading"><strong>HYVE PLAYLIST</strong><a id="playerExternal" href="https://music.youtube.com/playlist?list=PLRdWvw23-MlSNTOsEVTpqQPJu7VN1eBRS" target="_blank" rel="noopener noreferrer">OPEN PLAYLIST ↗</a></div>
-        <iframe id="hyvePlayer" title="HYVE playlist player" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen src="https://www.youtube-nocookie.com/embed/videoseries?list=PLRdWvw23-MlSNTOsEVTpqQPJu7VN1eBRS"></iframe>
+      <div class="native-player" aria-label="HYVEオーディオプレーヤー">
+        <div class="player-heading"><strong>HYVE AUDIO PLAYER</strong><span>LISTEN ON THIS SITE</span></div>
+        <div class="now-playing"><span class="playing-tag">NOW PLAYING</span><strong id="audioTrackTitle">SELECT A TRACK</strong><span id="audioTrackArtist">下の楽曲から選択してください</span></div>
+        <audio id="hyveAudio" controls preload="none" aria-label="選択中のHYVE楽曲"></audio>
+        <p id="audioStatus" class="tiny-note" role="status">音源が登録されると、このページ内で再生できます。</p>
       </div>
       <div id="featured" class="track-list"><p class="loading">Loading tracks...</p></div>
-      <p class="tiny-note">上のプレーヤーでHYVEの楽曲を再生できます。各曲のLISTENボタンからは収録作品を開けます。埋め込み再生が制限される場合は「OPEN PLAYLIST」をご利用ください。</p>
+      <p class="tiny-note">音源を登録済みの曲は「▶ PLAY」でこのページ内から再生できます。未登録の曲は作品ページへのリンクを表示します。</p>
       <div class="inline-actions"><a class="btn primary" data-setting="bandcamp" href="https://hyve-hard.bandcamp.com/" target="_blank" rel="noopener">ALL TRACKS ON BANDCAMP ↗</a></div>
     </section>
     <section id="releases" class="section-pad">
