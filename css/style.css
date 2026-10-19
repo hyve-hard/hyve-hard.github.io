@@ -244,3 +244,29 @@ span.track-release-link{color:#999;cursor:default}
  .topbar,footer{padding-left:16px !important;padding-right:16px !important;}
  #listen{scroll-margin-top:65px;}
 }
+
+/* HYVE hero: restore original supporting copy, replace only ENTER THE HYVE heading with logo. */
+.hero.hero-logo-copy{
+  position:relative; min-height:0!important; height:auto!important;
+  display:flex; flex-direction:column; align-items:flex-start; justify-content:center;
+  padding-top:39px!important; padding-bottom:29px!important;
+  text-align:left; overflow:hidden;
+}
+.hero.hero-logo-copy .hero-logo-heading{
+  margin:12px 0 4px; padding:0; width:100%; line-height:0;
+  font-size:0; text-align:left;
+}
+.hero.hero-logo-copy .hero-main-logo{
+  display:block; width:min(380px,100%); height:auto; max-height:155px; object-fit:contain;
+  object-position:left center;
+}
+.hero.hero-logo-copy .hero-label{margin:13px 0 6px}
+.hero.hero-logo-copy .hero-sub{margin:12px 0 5px}
+.hero.hero-logo-copy .hero-desc{margin:0;line-height:1.85}
+.hero.hero-logo-copy .hero-floor{margin-top:19px}
+@media(max-width:740px){
+  .hero.hero-logo-copy{padding-top:27px!important;padding-bottom:23px!important}
+  .hero.hero-logo-copy .hero-main-logo{width:min(270px,83%);max-height:112px}
+  .hero.hero-logo-copy .hero-sub{margin-top:9px}
+  .hero.hero-logo-copy .hero-floor{margin-top:14px}
+}
