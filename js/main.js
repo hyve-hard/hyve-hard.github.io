@@ -150,7 +150,7 @@
       const href = serviceHref(s.key, s.fallback);
       if (!href) return;
       const a = node('a'); a.href=href;a.target='_blank';a.rel='noopener noreferrer';
-      a.append(icon(s.icon), node('span','',s.label.toUpperCase() + ' ↗'));
+      a.append(icon(s.icon), node('span','',s.label.toUpperCase()));
       streamingLinks.append(a);
     });
     const note=document.getElementById('streamingLinkNote');

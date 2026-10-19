@@ -229,3 +229,18 @@ body{font-family:Inter,'Noto Sans JP','Helvetica Neue',Arial,sans-serif;font-fea
 a.track-release-link {cursor:pointer;pointer-events:auto;color:var(--yellow);text-decoration:underline;text-decoration-color:transparent;text-underline-offset:4px;transition:text-decoration-color .15s,color .15s}
 a.track-release-link:hover,a.track-release-link:focus-visible{text-decoration-color:currentColor;color:#fff}
 span.track-release-link{color:#999;cursor:default}
+
+/* 2026-10-19: compact, logo-only opening and readable content width. */
+.hero.hero-logo-only{min-height:0 !important;height:auto !important;padding-top:36px !important;padding-bottom:36px !important;display:flex;justify-content:center;align-items:center;background:var(--black);}
+.hero.hero-logo-only .hero-main-logo{display:block;position:relative;width:min(100%,330px);height:auto;max-height:140px;object-fit:contain;}
+/* Side margins also apply to navigation and footer. Full-width section backgrounds remain intact. */
+.section-pad{padding-left:max(28px,calc((100vw - 1080px)/2)) !important;padding-right:max(28px,calc((100vw - 1080px)/2)) !important;}
+.topbar,footer{padding-left:max(28px,calc((100vw - 1080px)/2)) !important;padding-right:max(28px,calc((100vw - 1080px)/2)) !important;}
+#listen{scroll-margin-top:75px;}
+@media (max-width:740px){
+ .hero.hero-logo-only{padding-top:24px !important;padding-bottom:24px !important;}
+ .hero.hero-logo-only .hero-main-logo{width:min(72%,230px);max-height:110px;}
+ .section-pad{padding-left:22px !important;padding-right:22px !important;}
+ .topbar,footer{padding-left:16px !important;padding-right:16px !important;}
+ #listen{scroll-margin-top:65px;}
+}
