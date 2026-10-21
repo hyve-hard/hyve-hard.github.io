@@ -83,35 +83,40 @@
       "title": "CHAIN REACTION",
       "artist": "rejection",
       "release": "HYVE VOL.6",
+      "albumUrl": "",
       "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-6",
       "audioUrl": "/assets/audio/01 CHAIN REACTION.mp3"
     },
     {
-      "title": "Retrospect",
-      "artist": "Sanaas",
-      "release": "HYVE VOL.1",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-1",
+      "title": "VAY",
+      "artist": "NGHTHYP",
+      "release": "HYVE VOL.4",
+      "albumUrl": "",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-4",
       "audioUrl": "/assets/audio/12 Retrospect.mp3"
     },
     {
-      "title": "Shapeshifter",
+      "title": "Ghepardo",
       "artist": "DJ Noriken",
-      "release": "HYVE VOL.4",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-4",
+      "release": "HYVE VOL.3",
+      "albumUrl": "",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-3",
       "audioUrl": "/assets/audio/11 Shapeshifter.mp3"
     },
     {
-      "title": "RUTTP",
-      "artist": "BCM",
-      "release": "HYVE VOL.3",
-      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-3",
+      "title": "Nightmare",
+      "artist": "Tatsunoshin",
+      "release": "HYVE VOL.5",
+      "albumUrl": "",
+      "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-5",
       "audioUrl": "/assets/audio/04 RUTTP.mp3"
     },
     {
-      "title": "caught up",
-      "artist": "the dig account",
-      "release": "EP-01: Donk Island",
-      "url": "https://hyve-hard.bandcamp.com/album/ep-01-donk-island",
+      "title": "Don't Stop",
+      "artist": "Freezer",
+      "release": "EP-03: Ravelet",
+      "albumUrl": "",
+      "url": "https://hyve-hard.bandcamp.com/album/ep-03-ravelet",
       "audioUrl": "/assets/audio/01 caught up.mp3"
     }
   ]
