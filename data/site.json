@@ -93,7 +93,7 @@
       "release": "HYVE VOL.4",
       "albumUrl": "",
       "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-4",
-      "audioUrl": "/assets/audio/12 Retrospect.mp3"
+      "audioUrl": "/assets/audio/03 VAY.mp3"
     },
     {
       "title": "Ghepardo",
@@ -101,7 +101,7 @@
       "release": "HYVE VOL.3",
       "albumUrl": "",
       "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-3",
-      "audioUrl": "/assets/audio/11 Shapeshifter.mp3"
+      "audioUrl": "/assets/audio/12 Ghepardo.mp3"
     },
     {
       "title": "Nightmare",
@@ -109,7 +109,7 @@
       "release": "HYVE VOL.5",
       "albumUrl": "",
       "url": "https://hyve-hard.bandcamp.com/album/hyve-vol-5",
-      "audioUrl": "/assets/audio/04 RUTTP.mp3"
+      "audioUrl": "/assets/audio/10 Nightmare.mp3"
     },
     {
       "title": "Don't Stop",
@@ -117,7 +117,7 @@
       "release": "EP-03: Ravelet",
       "albumUrl": "",
       "url": "https://hyve-hard.bandcamp.com/album/ep-03-ravelet",
-      "audioUrl": "/assets/audio/01 caught up.mp3"
+      "audioUrl": "/assets/audio/02 Don't Stop.mp3"
     }
   ]
 }
